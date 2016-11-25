@@ -1,0 +1,25 @@
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+##Don't think about buying this  <a href="http://www.spatourisme.be/en"> SPA </a>! 
+  
+### Click on the markers! (Nov. 25th, 2016)  
+```{r spa, include=TRUE}
+options(warn=-1)
+library(leaflet)
+my_map <- leaflet() %>% 
+    addTiles() %>%
+    addMarkers(lat= 50.492, lng=5.8658, popup= "The oldest casino in the world") %>%
+    addMarkers(lat= 50.4922, lng=5.867, popup= "Czar Peter the Great used to drink water here") %>%
+    addMarkers(lat= 50.492, lng=5.8644, popup= "The old bath house") %>%
+    addMarkers(lat= 50.4942, lng=5.8644, popup= "The new bath house")
+
+
+my_map
+```
+  
+### Tempted?
+
+
