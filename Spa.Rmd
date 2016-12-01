@@ -1,12 +1,44 @@
-
+---
+title: "Some graphics fun with R"
+author: "Bruno Hanzen"
+date: "01 décembre 2016"
+output: ioslides_presentation
+---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## GOOGLE stock value (Dec 1st, 2016)
+
+```{r google, include=TRUE, message=FALSE}
+options(warn=-1)
+library(quantmod)
+
+library(plotly)
+# options(warn=-1)
+google<-getSymbols("GOOG",src="yahoo")
+prices <- data.frame(time = index(GOOG),
+                       open = as.numeric(GOOG[,1]),
+                       high = as.numeric(GOOG[,2]),
+                       low = as.numeric(GOOG[,3]),
+                       close = as.numeric(GOOG[,4]),
+                       volume = as.numeric(GOOG[,5]))
+
+
+
+
+p<-plot_ly(prices, x=~time, y=~high, name='High', type='scatter', mode='lines', line=list(color='rgb(256, 0, 0)', width= 2)) %>%
+    add_trace(y=~low, name='Low', mode='lines', line=list(color='rgb(0, 256, 0)', width= 1)) %>%
+layout(title="Google stock price", yaxis=list(title="Price"))
+p
+
+```
+
 ##Don't think about buying this  <a href="http://www.spatourisme.be/en"> SPA </a>! 
   
 ### Click on the markers! (Nov. 25th, 2016)  
-```{r spa, include=TRUE}
+```{r spa, include=TRUE, message=FALSE}
 options(warn=-1)
 library(leaflet)
 my_map <- leaflet() %>% 
@@ -19,7 +51,5 @@ my_map <- leaflet() %>%
 
 my_map
 ```
-  
-### Tempted?
 
-
+### Tempted?  
